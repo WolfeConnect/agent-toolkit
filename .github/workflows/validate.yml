@@ -1,0 +1,21 @@
+name: validate-toolkit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON schema syntax
+        run: python3 -m json.tool catalog/schema.json > /dev/null
+      - name: Verify required portable surfaces
+        run: |
+          test -f AGENTS.md
+          test -f catalog/registry.yaml
+          test -f standards/promotion-policy.md
+          test -f templates/skill/SKILL.md
+          test -f tests/fixtures/valid-catalog.yaml
