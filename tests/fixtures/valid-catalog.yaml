@@ -1,0 +1,8 @@
+schema_version: 1
+assets:
+  - id: example-portable-skill
+    kind: skill
+    path: templates/skill/SKILL.md
+    provenance: personal-original
+    validation: manual-template-review
+
